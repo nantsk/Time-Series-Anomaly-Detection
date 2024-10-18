@@ -91,7 +91,8 @@ def process_file():
     data = read_uploaded_file(filepath)[[time_column, value_column]]
     data.set_index(time_column, inplace=True)
     data.columns = ['Value']
-    data.fillna(method='ffill', inplace=True)
+    # data.fillna(method='ffill', inplace=True)
+    data.ffill(inplace=True)
 
     def plot_anomalies(data, anomalies, method_name):
         """Function to create plots with anomalies highlighted"""
